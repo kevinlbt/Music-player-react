@@ -1,0 +1,92 @@
+@import 'progressBar';
+
+body {
+    background-image: url('../assets/image/smoke.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+
+    div {
+
+        .player {
+          background-image: url('../assets/image/smoke.png');
+          background-repeat: no-repeat;
+          background-size: cover;;
+          border-radius: 4em;
+          background-position: 50% 30%;
+
+          .audio-info {
+
+            img {
+              border-radius: 4em;
+              height: 25vw;
+              box-shadow: 31px 31px 40px 1px rgba(0, 0, 0, 0.39);
+            }
+            
+          }
+
+          .volume-wrapper {
+            top: 30rem;
+            left: 18.5rem
+          }
+          .pauseAndPlay {
+
+            display: flex;
+            justify-content: space-between;
+
+            button {
+
+              i {
+                font-size: 1.3em;
+              }
+            }
+            .play {
+              
+              border-radius: 50%;
+              background: #f7f1e5;
+              box-shadow:  5px 5px 11px #e3ded3,
+                           -5px -5px 11px #fffff7;
+              
+              i {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                font-size: 1.5em;
+              }
+            }
+            .pause {
+
+              border-radius: 50%;
+              background: linear-gradient(145deg, #ded9ce, #fffff5);
+              box-shadow:  5px 5px 11px #e3ded3,
+                          -5px -5px 11px #fffff7;
+              i {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                font-size: 1.5em;
+                padding-right: 1.65rem;
+              }
+            }
+
+          }
+
+        
+
+          .progress {
+
+            input[type="range"] {
+              --range-progress: 0;
+              /* ... */
+            }
+            
+            input[type="range"]::before {
+              /* ... */
+              background: #f50;
+              width: var(--range-progress);
+              /* ... */
+            }
+          }
+        } 
+    }
+
+  }

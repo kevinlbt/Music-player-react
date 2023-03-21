@@ -1,10 +1,22 @@
 @import 'progressBar';
 
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
 body {
-    background-image: url('../assets/image/smoke.png');
+    height: auto;
+    background-image: url('../assets/image/smoke4.png');
     background-repeat: no-repeat;
     background-size: cover;
 
+    @media (max-width: 1024px) {
+      background-image: url('../assets/image/smoke-mobile.png');
+      background-repeat: no-repeat;
+      background-size: cover;
+    }
     div {
 
         .player {
@@ -13,20 +25,99 @@ body {
           background-size: cover;;
           border-radius: 4em;
           background-position: 50% 30%;
+          box-shadow: 15px 15px 31px 8px rgba(0, 0, 0, 0.39);
+
+          .switch {
+            --primary-light: #f3b05f;
+            --primary: #bd823b;
+            --primary-dark: #915d1e;
+            --white: #FFFFFF;
+            --greyLight-1: #E4EBF5;
+            --greyLight-2: #c8d0e7;
+            --greyDark: #de8f2f;
+            left: 58vw;
+            top: 0vw;
+
+            .switch_ {
+              width: 6rem;
+              scale: 0.63;
+             /* You can change 
+              the size here !*/
+
+              input {
+                display: none;
+
+                &:checked ~ label::before {
+                  opacity: 1;
+                }
+
+                &:checked ~ label::after {
+                  left: 57%;
+                  background: var(--greyLight-1);
+                }
+              }
+
+              label {
+                display: flex;
+                align-items: center;
+                width: 100%;
+                height: 3rem;
+                box-shadow: 0.3rem 0.3rem 0.6rem var(--greyLight-2), -0.2rem -0.2rem 0.5rem var(--white);
+                background: rgba(255, 255, 255, 0);
+                position: relative;
+                cursor: pointer;
+                border-radius: 1.6rem;
+
+                &::after {
+                  content: "";
+                  position: absolute;
+                  left: 0.4rem;
+                  width: 2.1rem;
+                  height: 2.1rem;
+                  border-radius: 50%;
+                  background: var(--greyDark);
+                  transition: all 0.4s ease;
+                }
+
+                &::before {
+                  content: '';
+                  width: 100%;
+                  height: 100%;
+                  border-radius: inherit;
+                  background: linear-gradient(330deg, var(--primary-dark) 0%, var(--primary) 50%, var(--primary-light) 100%);
+                  opacity: 0;
+                  transition: all 0.4s ease;
+                }
+
+              }
+            }
+
+          }
+
 
           .audio-info {
 
             img {
               border-radius: 4em;
               height: 25vw;
-              box-shadow: 31px 31px 40px 1px rgba(0, 0, 0, 0.39);
+              box-shadow: 31px 31px 30px -7px rgba(0, 0, 0, 0.39);
+
+              @media (max-width: 1024px) {
+                height: 65vw;
+              }
             }
             
           }
 
           .volume-wrapper {
-            top: 30rem;
-            left: 18.5rem
+
+            .volume {
+
+              @media (min-width: 1024px) {
+                margin-top: -2.3vw;
+              }
+            }
+            
           }
           .pauseAndPlay {
 
@@ -42,9 +133,9 @@ body {
             .play {
               
               border-radius: 50%;
-              background: #f7f1e5;
-              box-shadow:  5px 5px 11px #e3ded3,
-                           -5px -5px 11px #fffff7;
+              background: linear-gradient(145deg, #e8cab1, #c3aa95);
+              box-shadow: 7px 7px 14px #bba38e,
+              -7px -7px 14px #f7d7bc;
               
               i {
                 display: flex;
@@ -56,9 +147,9 @@ body {
             .pause {
 
               border-radius: 50%;
-              background: linear-gradient(145deg, #ded9ce, #fffff5);
-              box-shadow:  5px 5px 11px #e3ded3,
-                          -5px -5px 11px #fffff7;
+              background: linear-gradient(145deg, #d9bda5, #e8cab1);
+              box-shadow:  7px 7px 14px #bba38e,
+              -7px -7px 14px #f7d7bc;
               i {
                 display: flex;
                 justify-content: center;
@@ -81,7 +172,7 @@ body {
             
             input[type="range"]::before {
               /* ... */
-              background: #f50;
+              background: #de8f2f;
               width: var(--range-progress);
               /* ... */
             }

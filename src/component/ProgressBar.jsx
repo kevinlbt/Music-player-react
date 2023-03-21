@@ -19,7 +19,7 @@ export const ProgressBar = ({progressBarRef, audioRef, timeProgress, duration}) 
     }
 
     return (
-      <div className="progress w-11/12 py-4 mx-auto flex flex-row items-center">
+      <div className="progress lg:w-11/12 py-4 mx-auto flex flex-row items-center">
         <span className="mx-4">{formatTime(timeProgress)}</span>
         <input type="range" ref={progressBarRef} defaultValue="0" onChange={handleProgressChange} />
         <span className="mx-4">{formatTime(duration)}</span>

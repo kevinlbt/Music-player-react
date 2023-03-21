@@ -22,8 +22,8 @@ input[type=range]::-moz-range-track {
 /* played progress length - Chrome & safari*/
 input[type=range]::before {
   content: "";
-  height: 2px;
-  background: #f50;
+  height: 3px;
+  background: #de8f2f;
   width: var(--range-progress);
   border-bottom-left-radius: 2px;
   border-top-left-radius: 2px;
@@ -34,20 +34,20 @@ input[type=range]::before {
 
 /* played progress length - firefox */
 input[type=range]::-moz-range-progress {
-  background: #f50;
+  background: #de8f2f;
   border-bottom-left-radius: 2px;
   border-top-left-radius: 2px;
-  height: 2px;
+  height: 3px;
 }
 
 /* slider thumb - chrome and safari */
 input[type=range]::-webkit-slider-thumb {
   -webkit-appearance: none;
-  height: 8px;
-  width: 8px;
+  height: 10px;
+  width: 10px;
   border-radius: 50%;
   border: none;
-  background-color: #f50;
+  background-color: #de8f2f;
   cursor: pointer;
   position: relative;
 }
@@ -62,7 +62,7 @@ input[type=range]::-moz-range-thumb {
   height: 8px;
   width: 8px;
   border-radius: 50%;
-  background: #f50;
+  background: #de8f2f;
   cursor: pointer;
   border: transparent;
   position: relative;
@@ -73,10 +73,24 @@ input[type=range]:active::-moz-range-thumb {
   transform: scale(1.2);
 }
 
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
 body {
-  background-image: url("../assets/image/smoke.png");
+  height: auto;
+  background-image: url("../assets/image/smoke4.png");
   background-repeat: no-repeat;
   background-size: cover;
+}
+@media (max-width: 1024px) {
+  body {
+    background-image: url("../assets/image/smoke-mobile.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
 }
 body div .player {
   background-image: url("../assets/image/smoke.png");
@@ -84,15 +98,79 @@ body div .player {
   background-size: cover;
   border-radius: 4em;
   background-position: 50% 30%;
+  box-shadow: 15px 15px 31px 8px rgba(0, 0, 0, 0.39);
+}
+body div .player .switch {
+  --primary-light: #f3b05f;
+  --primary: #bd823b;
+  --primary-dark: #915d1e;
+  --white: #FFFFFF;
+  --greyLight-1: #E4EBF5;
+  --greyLight-2: #c8d0e7;
+  --greyDark: #de8f2f;
+  left: 58vw;
+  top: 0vw;
+}
+body div .player .switch .switch_ {
+  width: 6rem;
+  scale: 0.63;
+  /* You can change 
+   the size here !*/
+}
+body div .player .switch .switch_ input {
+  display: none;
+}
+body div .player .switch .switch_ input:checked ~ label::before {
+  opacity: 1;
+}
+body div .player .switch .switch_ input:checked ~ label::after {
+  left: 57%;
+  background: var(--greyLight-1);
+}
+body div .player .switch .switch_ label {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  height: 3rem;
+  box-shadow: 0.3rem 0.3rem 0.6rem var(--greyLight-2), -0.2rem -0.2rem 0.5rem var(--white);
+  background: rgba(255, 255, 255, 0);
+  position: relative;
+  cursor: pointer;
+  border-radius: 1.6rem;
+}
+body div .player .switch .switch_ label::after {
+  content: "";
+  position: absolute;
+  left: 0.4rem;
+  width: 2.1rem;
+  height: 2.1rem;
+  border-radius: 50%;
+  background: var(--greyDark);
+  transition: all 0.4s ease;
+}
+body div .player .switch .switch_ label::before {
+  content: "";
+  width: 100%;
+  height: 100%;
+  border-radius: inherit;
+  background: linear-gradient(330deg, var(--primary-dark) 0%, var(--primary) 50%, var(--primary-light) 100%);
+  opacity: 0;
+  transition: all 0.4s ease;
 }
 body div .player .audio-info img {
   border-radius: 4em;
   height: 25vw;
-  box-shadow: 31px 31px 40px 1px rgba(0, 0, 0, 0.39);
+  box-shadow: 31px 31px 30px -7px rgba(0, 0, 0, 0.39);
 }
-body div .player .volume-wrapper {
-  top: 30rem;
-  left: 18.5rem;
+@media (max-width: 1024px) {
+  body div .player .audio-info img {
+    height: 65vw;
+  }
+}
+@media (min-width: 1024px) {
+  body div .player .volume-wrapper .volume {
+    margin-top: -2.3vw;
+  }
 }
 body div .player .pauseAndPlay {
   display: flex;
@@ -103,8 +181,8 @@ body div .player .pauseAndPlay button i {
 }
 body div .player .pauseAndPlay .play {
   border-radius: 50%;
-  background: #f7f1e5;
-  box-shadow: 5px 5px 11px #e3ded3, -5px -5px 11px #fffff7;
+  background: linear-gradient(145deg, #e8cab1, #c3aa95);
+  box-shadow: 7px 7px 14px #bba38e, -7px -7px 14px #f7d7bc;
 }
 body div .player .pauseAndPlay .play i {
   display: flex;
@@ -114,8 +192,8 @@ body div .player .pauseAndPlay .play i {
 }
 body div .player .pauseAndPlay .pause {
   border-radius: 50%;
-  background: linear-gradient(145deg, #ded9ce, #fffff5);
-  box-shadow: 5px 5px 11px #e3ded3, -5px -5px 11px #fffff7;
+  background: linear-gradient(145deg, #d9bda5, #e8cab1);
+  box-shadow: 7px 7px 14px #bba38e, -7px -7px 14px #f7d7bc;
 }
 body div .player .pauseAndPlay .pause i {
   display: flex;
@@ -130,7 +208,7 @@ body div .player .progress input[type=range] {
 }
 body div .player .progress input[type=range]::before {
   /* ... */
-  background: #f50;
+  background: #de8f2f;
   width: var(--range-progress);
   /* ... */
 }/*# sourceMappingURL=player.css.map */

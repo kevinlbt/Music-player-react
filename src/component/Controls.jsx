@@ -64,21 +64,21 @@ export function Controls ({audioRef, progressBarRef, duration, setTimeProgress, 
       }
 
     return <React.Fragment>
-        <div className="volume-wrapper p-2 flex flex-row justify-end">
-            <div className="volume w-2/5 flex flex-row justify-around items-center">
-                <button className="px-3" onClick={onVolumeMute}>{muteVolume ? <i className="fa-solid fa-volume-xmark"></i> : <i className="fa-solid fa-volume-high"></i>} </button>
+        <div className="volume-wrapper px-3 pb-2 flex justify-center lg:justify-end">
+            <div className="volume w-2/3 mt-4 flex flex-col justify-around items-center lg:flex-row lg:w-1/3 lg:justify-end">
+                <button className="px-3 py-3" onClick={onVolumeMute}>{muteVolume ? <i className="fa-solid fa-volume-xmark"></i> : <i className="fa-solid fa-volume-high"></i>} </button>
                 <input type="range" 
                     min={0}
                     max={100}
                     value={volume}
                     onChange={(e) => setVolume(e.target.value)}
                     style={{
-                        background: `linear-gradient(to right, #f50 ${volume}%, #ccc ${volume}%)`,
+                        background: `linear-gradient(to right, #de8f2f ${volume}%, #ccc ${volume}%)`,
                         }} 
                     /> 
             </div>                 
         </div> 
-        <div className="pauseAndPlay w-2/3 mx-auto py-4">
+        <div className="pauseAndPlay lg:w-2/3 mx-auto mb-4 mt-7">
             <button onClick={handleNext} className="p-5 m-3"><i className="fa-solid fa-backward-step"></i></button>   
             {isPlaying ? <button className="pl-6 py-5 m-3 pause" onClick={handleClick}><i className="fa-solid fa-pause pl-0.5"></i></button> : <button className="px-6 py-5 m-3 play" onClick={handleClick}><i className="fa-solid fa-play pl-0.5"></i></button>}
             <button onClick={handlePrevious} className="p-5 m-3"><i className="fa-solid fa-forward-step"></i></button>

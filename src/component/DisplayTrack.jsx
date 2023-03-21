@@ -9,12 +9,12 @@ export function DisplayTrack ({currentTrack, audioRef, progressBarRef, setDurati
 
     return <div>
             <audio src={currentTrack.src} ref={audioRef} onLoadedMetadata={onLoadedMetadata} onEnded={handleNext} />
-            <div className="audio-info">
+            <div className="audio-info text-center lg:text-left">
                 <div>
-                    <img className="pt-2 w-3/4 object-cover mx-auto" src={currentTrack.thumbnail} alt="music-img"></img>
+                    <img className="pt-2 w-4/5 object-cover mx-auto" src={currentTrack.thumbnail} alt="music-img"></img>
                 </div>
-                <h2 className="text-xl font-medium ml-6 pt-7">{currentTrack.title} </h2>
-                <h3 className="text-xl font-medium ml-6">{currentTrack.author} </h3>
+                <h2 className="lg:text-xl text-lg font-medium lg:ml-16 pt-7">{currentTrack.title} </h2>
+                <h3 className="lg:text-xl italic text-lg font-base lg:ml-16">{currentTrack.author} </h3>
             </div>
         </div>
       

@@ -5,6 +5,15 @@ import {DisplayTrack} from './DisplayTrack'
 import {Controls} from './Controls'
 import { useState, useRef } from "react"; 
 
+function Switch () {
+
+    return <div class="switch absolute">
+                <div class="switch_">
+                    <input type="checkbox" id="switch-"/>
+                    <label for="switch-"></label>
+                </div>
+            </div>
+}
 
 export function Player () {
 
@@ -26,7 +35,8 @@ export function Player () {
       };
 
        
-      return <div className="player mx-auto w-1/3 my-20 p-5 ">
+      return <div className="player mx-auto w-4/5 lg:w-1/3 mt-11 p-5 relative">
+                <Switch />
                 <DisplayTrack 
                     currentTrack={currentTrack} 
                     audioRef={audioRef} 

@@ -3,14 +3,24 @@ import {Tracks} from './Tracks'
 import {ProgressBar} from './ProgressBar'
 import {DisplayTrack} from './DisplayTrack'
 import {Controls} from './Controls'
-import { useState, useRef } from "react"; 
+import { useState, useRef, useEffect } from "react"; 
 
-function Switch () {
 
-    return <div class="switch absolute">
-                <div class="switch_">
-                    <input type="checkbox" id="switch-"/>
-                    <label for="switch-"></label>
+function Switch ({setTheme}) {
+
+    function handleChange (e) {
+        let value = e.target.checked;
+        if (value) {
+            setTheme("dark")
+        }else {
+            setTheme("light")
+        }
+    }
+
+    return <div className="switch absolute">
+                <div className="switch_">
+                    <input onChange={handleChange} type="checkbox" id="switch-"/>
+                    <label htmlFor="switch-"></label>
                 </div>
             </div>
 }
@@ -23,6 +33,29 @@ export function Player () {
     const progressBarRef = useRef();
     const [timeProgress, setTimeProgress] = useState(0);
     const [duration, setDuration] = useState(0);
+    const [theme, setTheme] = useState("light");
+
+    useEffect(() => {
+        const player = document.getElementById("player");
+
+        if (theme === "light") {
+            document.body.classList.add("lightBack");
+            player.classList.add('lightPlayer');
+        
+            document.body.classList.remove("darkBack");
+            player.classList.remove('darkPlayer');
+           
+        } 
+            if (theme === "dark") {
+            document.body.classList.add("darkBack");
+            player.classList.add('darkPlayer'); 
+
+            document.body.classList.remove("lightBack");
+            player.classList.remove('lightPlayer');
+           
+        }
+      }, [theme]);
+
 
     const handleNext = () => {
         if (trackIndex >= Tracks.length - 1) {
@@ -33,10 +66,9 @@ export function Player () {
           setCurrentTrack(Tracks[trackIndex + 1]);
         }
       };
-
-       
-      return <div className="player mx-auto w-4/5 lg:w-1/3 mt-11 p-5 relative">
-                <Switch />
+            
+      return  <div id="player" className="player mx-auto w-4/5 lg:w-1/3 mt-24 lg:mt-14 p-5 relative">
+                <Switch theme={theme} setTheme={setTheme} />
                 <DisplayTrack 
                     currentTrack={currentTrack} 
                     audioRef={audioRef} 
@@ -52,12 +84,13 @@ export function Player () {
                     trackIndex={trackIndex}
                     setTrackIndex={setTrackIndex}
                     setCurrentTrack={setCurrentTrack} 
-                    handleNext={handleNext} />
+                    handleNext={handleNext} 
+                    theme={theme}/>
                 <ProgressBar 
                     progressBarRef={progressBarRef}
                     audioRef={audioRef} 
                     timeProgress={timeProgress} 
                     duration={duration} />
             </div>
-        
+            
 }

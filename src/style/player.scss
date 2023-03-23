@@ -1,4 +1,5 @@
 @import 'progressBar';
+@import 'mainVariables';
 
 * {
   margin: 0;
@@ -6,21 +7,40 @@
   box-sizing: border-box;
 }
 
+
+.lightBack {
+  background-image: $light-background;
+
+  @media (max-width: 1024px) {
+    background-image: $light-back-mobile;
+  
+  }
+}
+
+.darkBack {
+  background-image: $dark-background;
+
+  @media (max-width: 1024px) {
+    background-image: $dark-back-mobile;
+    
+  }
+}
+
 body {
+
     height: auto;
-    background-image: url('../assets/image/smoke4.png');
     background-repeat: no-repeat;
     background-size: cover;
 
-    @media (max-width: 1024px) {
-      background-image: url('../assets/image/smoke-mobile.png');
-      background-repeat: no-repeat;
-      background-size: cover;
-    }
     div {
 
+        .lightPlayer {
+          background-image: $light-player-background;
+        }
+        .darkPlayer {
+          background-image: $dark-player-background;
+        }
         .player {
-          background-image: url('../assets/image/smoke.png');
           background-repeat: no-repeat;
           background-size: cover;;
           border-radius: 4em;
@@ -37,6 +57,12 @@ body {
             --greyDark: #de8f2f;
             left: 58vw;
             top: 0vw;
+
+            @media (max-width: 1024px) {
+              left: 62vw;
+              top: -18vw;
+              
+            }
 
             .switch_ {
               width: 6rem;
@@ -130,12 +156,24 @@ body {
                 font-size: 1.3em;
               }
             }
-            .play {
-              
+            .play-dark {
               border-radius: 50%;
-              background: linear-gradient(145deg, #e8cab1, #c3aa95);
-              box-shadow: 7px 7px 14px #bba38e,
-              -7px -7px 14px #f7d7bc;
+              background: linear-gradient(145deg, $dark-buttonP-darker, $dark-buttonP-lighter);
+              box-shadow: 6px -6px 14px $dark-shadow-buttonP-darker,
+              -6px 6px 14px $dark-shadow-buttonP-lighter;
+
+              i {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                font-size: 1.5em;
+              }
+            }
+            .play-light {   
+              border-radius: 50%;
+              background: linear-gradient(145deg, $buttonP-darker, $buttonP-lighter);
+              box-shadow: 6px -6px 14px $shadow-buttonP-darker,
+              -6px 6px 14px $shadow-buttonP-lighter;
               
               i {
                 display: flex;
@@ -144,12 +182,27 @@ body {
                 font-size: 1.5em;
               }
             }
-            .pause {
+            .pause-dark {
+              border-radius: 50%;
+              background: $dark-button;
+              box-shadow: inset 6px -6px 14px $dark-shadow-button-darker,
+              inset -6px 6px 14px $dark-shadow-button-lighter;
+
+              i {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                font-size: 1.5em;
+                padding-right: 1.65rem;
+              }
+            }
+            .pause-light {
 
               border-radius: 50%;
-              background: linear-gradient(145deg, #d9bda5, #e8cab1);
-              box-shadow:  7px 7px 14px #bba38e,
-              -7px -7px 14px #f7d7bc;
+              background: $button;
+              box-shadow: inset 6px -6px 14px $shadow-button-darker,
+              inset -6px 6px 14px $shadow-button-lighter;
+              
               i {
                 display: flex;
                 justify-content: center;

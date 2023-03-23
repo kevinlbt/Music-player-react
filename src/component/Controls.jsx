@@ -1,7 +1,31 @@
 import React from "react";
 import { useState, useEffect, useRef, useCallback } from "react";
 
-export function Controls ({audioRef, progressBarRef, duration, setTimeProgress, tracks, trackIndex, setTrackIndex, setCurrentTrack, handleNext}) {
+
+function ButtonPause ({theme, handleClick}) {
+
+  if(theme === "light") {
+    return <button className="pl-6 py-5 m-3 pause-light" onClick={handleClick}><i className="fa-solid fa-pause pl-0.5"></i></button>
+  }
+  if(theme === "dark") {
+    return <button className="pl-6 py-5 m-3 pause-dark" onClick={handleClick}><i className="fa-solid fa-pause pl-0.5"></i></button>
+  }
+
+}
+
+function ButtonPlay ({theme, handleClick}) {
+
+  if (theme === "light") {
+    return <button className="px-6 py-5 m-3 play-light" onClick={handleClick}><i className="fa-solid fa-play pl-0.5"></i></button>
+  }
+  if (theme === "dark") {
+    return <button className="px-6 py-5 m-3 play-dark" onClick={handleClick}><i className="fa-solid fa-play pl-0.5"></i></button>
+  }
+}
+
+
+
+export function Controls ({audioRef, progressBarRef, duration, setTimeProgress, tracks, trackIndex, setTrackIndex, setCurrentTrack, handleNext, theme}) {
 
     const playAnimationRef = useRef();
     const[isPlaying, setIsPlaying] = useState(false);
@@ -80,7 +104,7 @@ export function Controls ({audioRef, progressBarRef, duration, setTimeProgress, 
         </div> 
         <div className="pauseAndPlay lg:w-2/3 mx-auto mb-4 mt-7">
             <button onClick={handleNext} className="p-5 m-3"><i className="fa-solid fa-backward-step"></i></button>   
-            {isPlaying ? <button className="pl-6 py-5 m-3 pause" onClick={handleClick}><i className="fa-solid fa-pause pl-0.5"></i></button> : <button className="px-6 py-5 m-3 play" onClick={handleClick}><i className="fa-solid fa-play pl-0.5"></i></button>}
+            {isPlaying ? <ButtonPause theme={theme} handleClick={handleClick} /> : <ButtonPlay theme={theme} handleClick={handleClick} />}
             <button onClick={handlePrevious} className="p-5 m-3"><i className="fa-solid fa-forward-step"></i></button>
         </div>
           

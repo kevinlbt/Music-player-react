@@ -102,20 +102,20 @@ body {
   background-repeat: no-repeat;
   background-size: cover;
 }
-body div .lightPlayer {
+body div section .lightPlayer {
   background-image: url("../assets/image/smoke.png");
 }
-body div .darkPlayer {
+body div section .darkPlayer {
   background-image: url("../assets/image/smoke-dark2.png");
 }
-body div .player {
+body div section .player {
   background-repeat: no-repeat;
   background-size: cover;
   border-radius: 4em;
   background-position: 50% 30%;
   box-shadow: 15px 15px 31px 8px rgba(0, 0, 0, 0.39);
 }
-body div .player .switch {
+body div section .player .switch {
   --primary-light: #f3b05f;
   --primary: #bd823b;
   --primary-dark: #915d1e;
@@ -127,28 +127,28 @@ body div .player .switch {
   top: 0vw;
 }
 @media (max-width: 1024px) {
-  body div .player .switch {
+  body div section .player .switch {
     left: 62vw;
     top: -18vw;
   }
 }
-body div .player .switch .switch_ {
+body div section .player .switch .switch_ {
   width: 6rem;
   scale: 0.63;
   /* You can change 
    the size here !*/
 }
-body div .player .switch .switch_ input {
+body div section .player .switch .switch_ input {
   display: none;
 }
-body div .player .switch .switch_ input:checked ~ label::before {
+body div section .player .switch .switch_ input:checked ~ label::before {
   opacity: 1;
 }
-body div .player .switch .switch_ input:checked ~ label::after {
+body div section .player .switch .switch_ input:checked ~ label::after {
   left: 57%;
   background: var(--greyLight-1);
 }
-body div .player .switch .switch_ label {
+body div section .player .switch .switch_ label {
   display: flex;
   align-items: center;
   width: 100%;
@@ -159,7 +159,7 @@ body div .player .switch .switch_ label {
   cursor: pointer;
   border-radius: 1.6rem;
 }
-body div .player .switch .switch_ label::after {
+body div section .player .switch .switch_ label::after {
   content: "";
   position: absolute;
   left: 0.4rem;
@@ -169,7 +169,7 @@ body div .player .switch .switch_ label::after {
   background: var(--greyDark);
   transition: all 0.4s ease;
 }
-body div .player .switch .switch_ label::before {
+body div section .player .switch .switch_ label::before {
   content: "";
   width: 100%;
   height: 100%;
@@ -178,81 +178,213 @@ body div .player .switch .switch_ label::before {
   opacity: 0;
   transition: all 0.4s ease;
 }
-body div .player .audio-info img {
-  border-radius: 4em;
+body div section .player .audio-info div {
   height: 25vw;
+  position: relative;
+}
+body div section .player .audio-info div .active {
+  position: absolute;
+  max-height: 25vw;
+  border-radius: 4em;
   box-shadow: 31px 31px 30px -7px rgba(0, 0, 0, 0.39);
+  transition: opacity 0.5s, transform 0.5s;
+  top: 0;
+  left: 0;
+  right: 0;
 }
 @media (max-width: 1024px) {
-  body div .player .audio-info img {
-    height: 65vw;
+  body div section .player .audio-info div {
+    height: 60vw;
+  }
+  body div section .player .audio-info div .active {
+    max-height: 60vw;
   }
 }
 @media (min-width: 1024px) {
-  body div .player .volume-wrapper .volume {
-    margin-top: -2.3vw;
+  body div section .player .volume-wrapper .volume {
+    margin-top: -2.5vw;
   }
 }
-body div .player .pauseAndPlay {
+body div section .player .empty {
+  display: block;
+  height: 40px;
+}
+body div section .player .loader {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 80px;
+  height: 40px;
+  position: relative;
+}
+body div section .player .loader:before {
+  content: "";
+  position: absolute;
+  top: -10px;
+  left: -10px;
+  right: -10px;
+  bottom: -10px;
+  border-radius: 50%;
+}
+body div section .player .loader .loader-inner {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+body div section .player .loader .loader-inner .loader-block {
+  display: inline-block;
+  width: 10px;
+  height: 10px;
+  margin: 2px;
+  background-color: #fff;
+  box-shadow: 0 0 20px #fff;
+  animation: loader_562 1.2s cubic-bezier(0.5, 0, 0.5, 1) infinite;
+}
+body div section .player .loader .loader-inner .loader-block:nth-child(1) {
+  animation-delay: 0.1s;
+}
+body div section .player .loader .loader-inner .loader-block:nth-child(2) {
+  animation-delay: 0.2s;
+}
+body div section .player .loader .loader-inner .loader-block:nth-child(3) {
+  animation-delay: 0.3s;
+}
+body div section .player .loader .loader-inner .loader-block:nth-child(4) {
+  animation-delay: 0.4s;
+}
+body div section .player .loader .loader-inner .loader-block:nth-child(5) {
+  animation-delay: 0.5s;
+}
+body div section .player .loader .loader-inner .loader-block:nth-child(6) {
+  animation-delay: 0.6s;
+}
+body div section .player .loader .loader-inner .loader-block:nth-child(7) {
+  animation-delay: 0.7s;
+}
+body div section .player .loader .loader-inner .loader-block:nth-child(8) {
+  animation-delay: 0.8s;
+}
+@keyframes loader_562 {
+  0% {
+    transform: scale(1);
+    box-shadow: 0 0 20px rgba(255, 255, 255, 0.5);
+  }
+  20% {
+    transform: scale(1, 2.5);
+    box-shadow: 0 0 50px rgba(255, 255, 255, 0.7);
+  }
+  40% {
+    transform: scale(1);
+    box-shadow: 0 0 20px rgba(255, 255, 255, 0.5);
+  }
+}
+body div section .player .pauseAndPlay {
   display: flex;
   justify-content: space-between;
 }
-body div .player .pauseAndPlay button i {
+body div section .player .pauseAndPlay button i {
   font-size: 1.3em;
 }
-body div .player .pauseAndPlay .play-dark {
+body div section .player .pauseAndPlay .play-dark {
   border-radius: 50%;
   background: linear-gradient(145deg, #c3a98e, #a48e78);
   box-shadow: 6px -6px 14px #9b8671, -6px 6px 14px #d1b699;
 }
-body div .player .pauseAndPlay .play-dark i {
+body div section .player .pauseAndPlay .play-dark i {
   display: flex;
   justify-content: center;
   align-items: center;
   font-size: 1.5em;
 }
-body div .player .pauseAndPlay .play-light {
+body div section .player .pauseAndPlay .play-light {
   border-radius: 50%;
   background: linear-gradient(145deg, #e9cbb2, #c4ab95);
   box-shadow: 6px -6px 14px #b9a28d, -6px 6px 14px #fbdbbf;
 }
-body div .player .pauseAndPlay .play-light i {
+body div section .player .pauseAndPlay .play-light i {
   display: flex;
   justify-content: center;
   align-items: center;
   font-size: 1.5em;
 }
-body div .player .pauseAndPlay .pause-dark {
+body div section .player .pauseAndPlay .pause-dark {
   border-radius: 50%;
   background: #b69e85;
   box-shadow: inset 6px -6px 14px #9b8671, inset -6px 6px 14px #d1b699;
 }
-body div .player .pauseAndPlay .pause-dark i {
+body div section .player .pauseAndPlay .pause-dark i {
   display: flex;
   justify-content: center;
   align-items: center;
   font-size: 1.5em;
   padding-right: 1.65rem;
 }
-body div .player .pauseAndPlay .pause-light {
+body div section .player .pauseAndPlay .pause-light {
   border-radius: 50%;
   background: #dabea6;
   box-shadow: inset 6px -6px 14px #b9a28d, inset -6px 6px 14px #fbdbbf;
 }
-body div .player .pauseAndPlay .pause-light i {
+body div section .player .pauseAndPlay .pause-light i {
   display: flex;
   justify-content: center;
   align-items: center;
   font-size: 1.5em;
   padding-right: 1.65rem;
 }
-body div .player .progress input[type=range] {
+body div section .player .progress input[type=range] {
   --range-progress: 0;
   /* ... */
 }
-body div .player .progress input[type=range]::before {
+body div section .player .progress input[type=range]::before {
   /* ... */
   background: #de8f2f;
   width: var(--range-progress);
   /* ... */
+}
+
+/* next track */
+.fade-enter {
+  opacity: 0;
+  z-index: 1;
+  transform: scale(0.6);
+  pointer-events: none;
+}
+
+.fade-enter.fade-enter-active {
+  transition: scale 0.25s ease-in-out;
+}
+
+.fade-exit {
+  opacity: 1;
+  transform: scale(1.2);
+  pointer-events: none;
+}
+
+.fade-exit.fade-exit-active {
+  opacity: 0;
+  transition: all 0.25s ease-in-out;
+}
+
+/* prev track */
+.fadeout-enter {
+  opacity: 0;
+  z-index: 1;
+  transform: scale(1.2);
+  pointer-events: none;
+}
+
+.fadeout-enter.fade-enter-active {
+  transition: all 0.25s ease-in-out;
+}
+
+.fadeout-exit {
+  opacity: 0;
+  transform: scale(0.6);
+  pointer-events: none;
+}
+
+.fadeout-exit.fade-exit-active {
+  opacity: 0;
+  transition: all 0.25s ease-in-out;
 }/*# sourceMappingURL=player.css.map */

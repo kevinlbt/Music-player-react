@@ -34,6 +34,8 @@ body {
 
     div {
 
+      section {
+
         .lightPlayer {
           background-image: $light-player-background;
         }
@@ -123,13 +125,27 @@ body {
 
           .audio-info {
 
-            img {
-              border-radius: 4em;
+            div {
               height: 25vw;
-              box-shadow: 31px 31px 30px -7px rgba(0, 0, 0, 0.39);
+              position: relative;
+
+              .active {
+                position: absolute;
+                max-height: 25vw;
+                border-radius: 4em;
+                box-shadow: 31px 31px 30px -7px rgba(0, 0, 0, 0.39);
+                transition: opacity 0.5s, transform 0.5s;
+                top: 0;
+                left: 0;
+                right: 0;
+              }
 
               @media (max-width: 1024px) {
-                height: 65vw;
+                height: 60vw;
+
+                .active {
+                  max-height: 60vw;
+                }
               }
             }
             
@@ -140,11 +156,101 @@ body {
             .volume {
 
               @media (min-width: 1024px) {
-                margin-top: -2.3vw;
+                margin-top: -2.5vw;
               }
             }
             
           }
+          .empty {
+            display: block;
+            height: 40px;
+          }
+          .loader {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 80px;
+            height: 40px;
+            position: relative;
+
+            &:before {
+              content: "";
+              position: absolute;
+              top: -10px;
+              left: -10px;
+              right: -10px;
+              bottom: -10px;
+              border-radius: 50%;
+            }
+
+            .loader-inner {
+              display: flex;
+              justify-content: center;
+              align-items: center;
+              position: relative;
+
+              .loader-block {
+                display: inline-block;
+                width: 10px;
+                height: 10px;
+                margin: 2px;
+                background-color: #fff;
+                box-shadow: 0 0 20px #fff;
+                animation: loader_562 1.2s cubic-bezier(0.5, 0, 0.5, 1) infinite;
+
+                &:nth-child(1) {
+                  animation-delay: 0.1s;
+                }
+                
+                &:nth-child(2) {
+                  animation-delay: 0.2s;
+                }
+                
+                &:nth-child(3) {
+                  animation-delay: 0.3s;
+                }
+                
+                &:nth-child(4) {
+                  animation-delay: 0.4s;
+                }
+                
+                &:nth-child(5) {
+                  animation-delay: 0.5s;
+                }
+                
+                &:nth-child(6) {
+                  animation-delay: 0.6s;
+                }
+                
+                &:nth-child(7) {
+                  animation-delay: 0.7s;
+                }
+                
+                &:nth-child(8) {
+                  animation-delay: 0.8s;
+                }
+
+                @keyframes loader_562 {
+                  0% {
+                    transform: scale(1);
+                    box-shadow: 0 0 20px rgba(255, 255, 255, 0.5);
+                  }
+                
+                  20% {
+                    transform: scale(1, 2.5);
+                    box-shadow: 0 0 50px rgba(255, 255, 255, 0.7);
+                  }
+                
+                  40% {
+                    transform: scale(1);
+                    box-shadow: 0 0 20px rgba(255, 255, 255, 0.5);
+                  }
+                }
+              }
+            }
+
+          }
+
           .pauseAndPlay {
 
             display: flex;
@@ -230,7 +336,59 @@ body {
               /* ... */
             }
           }
-        } 
+        }
+      }
+         
     }
 
   }
+
+
+
+   /* next track */
+  .fade-enter {
+    opacity: 0;
+    z-index: 1;
+    transform: scale(0.6);
+    pointer-events: none;
+  }
+  .fade-enter.fade-enter-active {
+      transition: scale .25s ease-in-out;
+  }
+  
+
+  .fade-exit {
+      opacity: 1;
+      transform: scale(1.2);
+      pointer-events: none;
+  }
+  .fade-exit.fade-exit-active {
+      opacity: 0;
+      transition: all .25s ease-in-out;
+  }
+  
+
+
+   /* prev track */
+  .fadeout-enter {
+    opacity: 0;
+    z-index: 1;
+    transform: scale(1.2);
+    pointer-events: none;
+  }
+  .fadeout-enter.fade-enter-active {
+      transition: all .25s ease-in-out;
+  }
+  
+  
+
+  .fadeout-exit {
+      opacity: 0;
+      transform: scale(0.6);
+      pointer-events: none;
+  }
+  .fadeout-exit.fade-exit-active {
+      opacity: 0;
+      transition: all .25s ease-in-out;
+  }
+  

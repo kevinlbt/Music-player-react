@@ -26,7 +26,7 @@ function Switch ({setTheme}) {
 }
 
 export function Player () {
-
+    
     const [trackIndex, setTrackIndex] = useState(0);
     const [currentTrack, setCurrentTrack] = useState(Tracks[trackIndex]);
     const audioRef = useRef();
@@ -34,6 +34,9 @@ export function Player () {
     const [timeProgress, setTimeProgress] = useState(0);
     const [duration, setDuration] = useState(0);
     const [theme, setTheme] = useState("light");
+    const [transitionName, setTransitionName] = useState("fade");
+
+   
 
     useEffect(() => {
         const player = document.getElementById("player");
@@ -58,39 +61,53 @@ export function Player () {
 
 
     const handleNext = () => {
+
+        setTransitionName("fade");
+
         if (trackIndex >= Tracks.length - 1) {
-          setTrackIndex(0);
-          setCurrentTrack(Tracks[0]);
-        } else {
-          setTrackIndex((prev) => prev + 1);
-          setCurrentTrack(Tracks[trackIndex + 1]);
-        }
+            setTrackIndex(0);
+            setCurrentTrack(Tracks[0]);
+    
+            } else {
+            setTrackIndex((prev) => prev + 1);
+            setCurrentTrack(Tracks[trackIndex + 1]);
+
+            }
+        
+        
       };
-            
-      return  <div id="player" className="player mx-auto w-4/5 lg:w-1/3 mt-24 lg:mt-14 p-5 relative">
-                <Switch theme={theme} setTheme={setTheme} />
-                <DisplayTrack 
-                    currentTrack={currentTrack} 
-                    audioRef={audioRef} 
-                    progressBarRef={progressBarRef}
-                    setDuration={setDuration} 
-                    handleNext={handleNext}/>
-                <Controls 
-                    audioRef={audioRef} 
-                    progressBarRef={progressBarRef} 
-                    duration={duration} 
-                    setTimeProgress={setTimeProgress} 
-                    tracks={Tracks}
-                    trackIndex={trackIndex}
-                    setTrackIndex={setTrackIndex}
-                    setCurrentTrack={setCurrentTrack} 
-                    handleNext={handleNext} 
-                    theme={theme}/>
-                <ProgressBar 
-                    progressBarRef={progressBarRef}
-                    audioRef={audioRef} 
-                    timeProgress={timeProgress} 
-                    duration={duration} />
-            </div>
-            
+          
+      return  <section>    
+                <div id="player" className="container player mx-auto w-4/5 lg:w-1/3 mt-24 lg:mt-8 p-5 relative">
+                    <Switch theme={theme} setTheme={setTheme} />
+                    <DisplayTrack 
+                        currentTrack={currentTrack} 
+                        audioRef={audioRef} 
+                        progressBarRef={progressBarRef}
+                        setDuration={setDuration} 
+                        handleNext={handleNext}
+                        tracks={Tracks}
+                        trackIndex={trackIndex} 
+                        transitionName={transitionName} 
+                         />
+                    <Controls 
+                        audioRef={audioRef} 
+                        progressBarRef={progressBarRef} 
+                        duration={duration} 
+                        setTimeProgress={setTimeProgress} 
+                        tracks={Tracks}
+                        trackIndex={trackIndex}
+                        setTrackIndex={setTrackIndex}
+                        setCurrentTrack={setCurrentTrack} 
+                        handleNext={handleNext} 
+                        theme={theme}
+                        currentTrack={currentTrack} 
+                        setTransitionName={setTransitionName} />
+                    <ProgressBar 
+                        progressBarRef={progressBarRef}
+                        audioRef={audioRef} 
+                        timeProgress={timeProgress} 
+                        duration={duration} />
+                </div>
+            </section>    
 }

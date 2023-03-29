@@ -1,4 +1,5 @@
 import React from "react";
+import {Loader} from './Loader'
 import { useState, useEffect, useRef, useCallback } from "react";
 
 
@@ -25,7 +26,7 @@ function ButtonPlay ({theme, handleClick}) {
 
 
 
-export function Controls ({audioRef, progressBarRef, duration, setTimeProgress, tracks, trackIndex, setTrackIndex, setCurrentTrack, handleNext, theme}) {
+export function Controls ({audioRef, progressBarRef, duration, setTimeProgress, tracks, trackIndex, setTrackIndex, setCurrentTrack, handleNext, theme, setTransitionName}) {
 
     const playAnimationRef = useRef();
     const[isPlaying, setIsPlaying] = useState(false);
@@ -69,14 +70,20 @@ export function Controls ({audioRef, progressBarRef, duration, setTimeProgress, 
       }, [volume, audioRef, muteVolume]);
 
       const handlePrevious = () => {
+
+        setTransitionName("fadeout");
+
         if (trackIndex === 0) {
           let lastTrackIndex = tracks.length - 1;
           setTrackIndex(lastTrackIndex);
           setCurrentTrack(tracks[lastTrackIndex]);
+
         } else {
           setTrackIndex((prev) => prev - 1);
           setCurrentTrack(tracks[trackIndex - 1]);
+
         }
+
       };
 
       const onVolumeMute = () => {
@@ -89,7 +96,7 @@ export function Controls ({audioRef, progressBarRef, duration, setTimeProgress, 
 
     return <React.Fragment>
         <div className="volume-wrapper px-3 pb-2 flex justify-center lg:justify-end">
-            <div className="volume w-2/3 mt-4 flex flex-col justify-around items-center lg:flex-row lg:w-1/3 lg:justify-end">
+            <div className="volume w-2/4 mt-4 mb-3 flex flex-col justify-around items-center lg:flex-row lg:w-1/4 lg:justify-end">
                 <button className="px-3 py-3" onClick={onVolumeMute}>{muteVolume ? <i className="fa-solid fa-volume-xmark"></i> : <i className="fa-solid fa-volume-high"></i>} </button>
                 <input type="range" 
                     min={0}
@@ -102,10 +109,11 @@ export function Controls ({audioRef, progressBarRef, duration, setTimeProgress, 
                     /> 
             </div>                 
         </div> 
-        <div className="pauseAndPlay lg:w-2/3 mx-auto mb-4 mt-7">
-            <button onClick={handleNext} className="p-5 m-3"><i className="fa-solid fa-backward-step"></i></button>   
+        {isPlaying ? <Loader /> : <div className="empty"></div>} 
+        <div className="pauseAndPlay lg:w-2/3 mx-auto mb-4">
+            <button onClick={handlePrevious} className="p-5 m-3"><i className="fa-solid fa-backward-step"></i></button>   
             {isPlaying ? <ButtonPause theme={theme} handleClick={handleClick} /> : <ButtonPlay theme={theme} handleClick={handleClick} />}
-            <button onClick={handlePrevious} className="p-5 m-3"><i className="fa-solid fa-forward-step"></i></button>
+            <button onClick={handleNext} className="p-5 m-3"><i className="fa-solid fa-forward-step"></i></button>
         </div>
           
     </React.Fragment>

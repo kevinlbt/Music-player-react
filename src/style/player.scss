@@ -62,7 +62,7 @@ body {
 
             @media (max-width: 1024px) {
               left: 62vw;
-              top: -18vw;
+              top: -11.5vw;
               
             }
 
@@ -252,16 +252,20 @@ body {
           }
 
           .pauseAndPlay {
-
-            display: flex;
-            justify-content: space-between;
-
+  
             button {
 
+              transition: all 0.3s;
+
               i {
-                font-size: 1.3em;
+                font-size: 1.2em;
+              }
+              &:hover {
+                color: rgba(212, 140, 45, 0.849);
+        
               }
             }
+
             .play-dark {
               border-radius: 50%;
               background: linear-gradient(145deg, $dark-buttonP-darker, $dark-buttonP-lighter);

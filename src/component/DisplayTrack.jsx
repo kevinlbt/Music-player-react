@@ -26,7 +26,7 @@ export function DisplayTrack ({currentTrack, audioRef, progressBarRef, setDurati
                     <CSSTransition
                         appear={true}
                         key={currentTrack.id}
-                        timeout={350}
+                        timeout={250}
                         classNames={transitionName === "fade" ? "fade" : "fadeout"}
                     >   
                         <img className="active pt-2 w-4/5 object-cover mx-auto" src={currentTrack.thumbnail} alt="music-img"></img>                      

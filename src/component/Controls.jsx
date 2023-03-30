@@ -110,7 +110,7 @@ export function Controls ({audioRef, progressBarRef, duration, setTimeProgress, 
             </div>                 
         </div> 
         {isPlaying ? <Loader /> : <div className="empty"></div>} 
-        <div className="pauseAndPlay lg:w-2/3 mx-auto mb-4">
+        <div className="pauseAndPlay flex justify-around lg:justify-between lg:w-2/3 mx-auto mb-4">
             <button onClick={handlePrevious} className="p-5 m-3"><i className="fa-solid fa-backward-step"></i></button>   
             {isPlaying ? <ButtonPause theme={theme} handleClick={handleClick} /> : <ButtonPlay theme={theme} handleClick={handleClick} />}
             <button onClick={handleNext} className="p-5 m-3"><i className="fa-solid fa-forward-step"></i></button>

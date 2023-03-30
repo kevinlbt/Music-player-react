@@ -129,7 +129,7 @@ body div section .player .switch {
 @media (max-width: 1024px) {
   body div section .player .switch {
     left: 62vw;
-    top: -18vw;
+    top: -11.5vw;
   }
 }
 body div section .player .switch .switch_ {
@@ -279,12 +279,14 @@ body div section .player .loader .loader-inner .loader-block:nth-child(8) {
     box-shadow: 0 0 20px rgba(255, 255, 255, 0.5);
   }
 }
-body div section .player .pauseAndPlay {
-  display: flex;
-  justify-content: space-between;
+body div section .player .pauseAndPlay button {
+  transition: all 0.3s;
 }
 body div section .player .pauseAndPlay button i {
-  font-size: 1.3em;
+  font-size: 1.2em;
+}
+body div section .player .pauseAndPlay button:hover {
+  color: rgba(212, 140, 45, 0.849);
 }
 body div section .player .pauseAndPlay .play-dark {
   border-radius: 50%;

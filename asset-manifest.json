@@ -1,0 +1,33 @@
+{
+  "files": {
+    "main.css": "/Music-player-react/static/css/main.d9327db6.css",
+    "main.js": "/Music-player-react/static/js/main.5167ae27.js",
+    "static/js/787.ded37e57.chunk.js": "/Music-player-react/static/js/787.ded37e57.chunk.js",
+    "static/media/memories.mp3": "/Music-player-react/static/media/memories.d20cfe6e0dd397756d78.mp3",
+    "static/media/last.mp3": "/Music-player-react/static/media/last.67efb3563f03371b52e7.mp3",
+    "static/media/Time.mp3": "/Music-player-react/static/media/Time.d78184f3a81580abf33f.mp3",
+    "static/media/00059.png": "/Music-player-react/static/media/00059.48492012b2ff0756d1a2.png",
+    "static/media/M83.mp3": "/Music-player-react/static/media/M83.fd74498f2f959a9139ff.mp3",
+    "static/media/resonance.mp3": "/Music-player-react/static/media/resonance.9d41cfce8204d56bbaef.mp3",
+    "static/media/C418.mp3": "/Music-player-react/static/media/C418.a6f8eceaf8d4c4771cb2.mp3",
+    "static/media/smoke-mobile.png": "/Music-player-react/static/media/smoke-mobile.be88291ca7b760f0c0e8.png",
+    "static/media/smoke4.png": "/Music-player-react/static/media/smoke4.f7791d2f651170bbfb45.png",
+    "static/media/smoke-dark.png": "/Music-player-react/static/media/smoke-dark.d60a4f6d63f8238508b3.png",
+    "static/media/000586.png": "/Music-player-react/static/media/000586.42203747e18687eceaaf.png",
+    "static/media/smoke-dark-mobile.png": "/Music-player-react/static/media/smoke-dark-mobile.2bf7014b3f4293f81391.png",
+    "static/media/cube.png": "/Music-player-react/static/media/cube.24b1c3ee2f70b46e3463.png",
+    "static/media/smoke-dark2.png": "/Music-player-react/static/media/smoke-dark2.db4fa52d4a54351a26ea.png",
+    "static/media/smoke.png": "/Music-player-react/static/media/smoke.2a55e400fb8ffb4ce8fc.png",
+    "static/media/m83.jpg": "/Music-player-react/static/media/m83.526c684281910c3182eb.jpg",
+    "static/media/reso.jpg": "/Music-player-react/static/media/reso.6d054eecc4471bc6893b.jpg",
+    "static/media/time.jpg": "/Music-player-react/static/media/time.964c79297763cf5f8436.jpg",
+    "index.html": "/Music-player-react/index.html",
+    "main.d9327db6.css.map": "/Music-player-react/static/css/main.d9327db6.css.map",
+    "main.5167ae27.js.map": "/Music-player-react/static/js/main.5167ae27.js.map",
+    "787.ded37e57.chunk.js.map": "/Music-player-react/static/js/787.ded37e57.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.d9327db6.css",
+    "static/js/main.5167ae27.js"
+  ]
+}
